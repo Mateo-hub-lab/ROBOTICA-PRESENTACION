@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HandsOn - Presentación de Proyecto (GitHub)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0f19;
+      color: #f8fafc;
+    }
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.35s ease-in-out;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+    .glow-bg {
+      background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0) 70%);
+    }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col justify-between p-3 md:p-6 glow-bg">
+
+  <header class="flex justify-between items-center max-w-5xl mx-auto w-full border-b border-slate-800/80 pb-3">
+    <div class="flex items-center gap-3">
+      <div class="bg-gradient-to-r from-sky-500 to-emerald-400 text-slate-950 font-black px-3 py-1 rounded-lg text-base tracking-tight flex items-center gap-1.5 shadow-lg shadow-sky-500/20">
+        <i class="fa-solid fa-hand-sparkles"></i>
+        <span>Hands<span class="text-slate-900">On</span></span>
+      </div>
+      <span class="text-xs text-slate-400 font-medium hidden sm:inline-block">Detector de Lenguaje de Señas</span>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <span class="text-xs text-sky-400 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-500/30 flex items-center gap-1.5">
+        <i class="fa-brands fa-github"></i>
+        <span class="font-semibold">Docs GitHub</span>
+      </span>
+    </div>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center max-w-5xl mx-auto w-full py-3">
+
+    <!-- SLIDE 1: PORTADA DEL PROYECTO -->
+    <section class="slide active flex-col justify-between w-full h-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div>
+        <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700/80 text-sky-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Lección 1 & 2 • Documentación para GitHub</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3">
+          Proyecto <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">HandsOn</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed">
+          Traductor en tiempo real de Lengua de Señas mediante visión por computadora e Inteligencia Artificial.
+        </p>
+        
+        <p class="mt-3 text-slate-400 text-xs sm:text-sm max-w-xl">
+          Eje Tecno-Creativo: <strong class="text-slate-200">Electrónica y Programación</strong>. Solución asistiva enfocada en la inclusión social y la autonomía comunicativa.
+        </p>
+      </div>
+
+      <div class="border-t border-slate-800/80 pt-4 mt-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="bg-slate-800/40 border border-slate-700/50 p-3 rounded-xl flex items-center gap-3">
+            <div class="p-2 bg-sky-500/10 text-sky-400 rounded-lg">
+              <i class="fa-solid fa-bullseye text-base"></i>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Estado del Proyecto</div>
+              <div class="text-xs font-bold text-slate-200">Ideación, Naming y Cliente Objetivo</div>
+            </div>
+          </div>
+
+          <div class="bg-slate-800/40 border border-slate-700/50 p-3 rounded-xl flex items-center gap-3">
+            <div class="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg">
+              <i class="fa-solid fa-users text-base"></i>
+            </div>
+            <div>
+              <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Equipo de Trabajo</div>
+              <div class="text-xs font-bold text-emerald-300">5 Roles Definidos (Pendientes por Asignar)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: LECCIÓN 1 - IDEACIÓN EN MIRO -->
+    <section class="slide flex-col justify-between w-full h-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-sm">
+      <div>
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <span class="text-[11px] font-bold text-sky-400 tracking-wider uppercase">Lección 1 • Miro Board</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white">Lluvia de Ideas y Enfoque</h2>
+          </div>
+          <span class="text-xs font-semibold bg-slate-800 text-slate-300 px-3 py-1 rounded-lg border border-slate-700">
+            Eje: Electrónica & Programación
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
+          <!-- Opción descartadas -->
+          <div class="bg-slate-800/30 p-4 rounded-xl border border-slate-800/80 space-y-2">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Otras propuestas evaluadas:</h3>
+            
+            <div class="p-2.5 rounded-lg bg-slate-950/40 border border-slate-800 text-xs text-slate-400 flex items-start gap-2">
+              <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+              <span><strong>Idea A:</strong> Cinturón háptico de navegación con ultrasonido para personas con discapacidad visual.</span>
+            </div>
+
+            <div class="p-2.5 rounded-lg bg-slate-950/40 border border-slate-800 text-xs text-slate-400 flex items-start gap-2">
+              <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+              <span><strong>Idea B:</strong> Sistema de riego automatizado con sensores para huertos urbanos.</span>
+            </div>
+
+            <div class="p-2.5 rounded-lg bg-slate-950/40 border border-slate-800 text-xs text-slate-400 flex items-start gap-2">
+              <i class="fa-solid fa-xmark text-rose-400 mt-0.5"></i>
+              <span><strong>Idea D:</strong> Comedero inteligente con escáner para mascotas.</span>
+            </div>
+          </div>
+
+          <!-- Opción Ganadora -->
+          <div class="bg-gradient-to-b from-sky-950/50 to-slate-900 p-4 rounded-xl border border-sky-500/40 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                  <i class="fa-solid fa-trophy mr-1"></i> Propuesta Ganadora
+                </span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-[10px] px-2 py-0.5 rounded font-bold">Idea C</span>
+              </div>
+              <h4 class="text-base font-bold text-white mb-2">Detector de Lenguaje de Señas</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Aprovecha módulos de cámaras accesibles y modelos de aprendizaje automático (visión artificial) para interpretar gestos manuales y traducirlos instantáneamente a texto o voz.
+              </p>
+            </div>
+
+            <div class="mt-3 pt-3 border-t border-sky-900/50 text-[11px] text-sky-200/80">
+              <strong class="text-sky-300">Justificación:</strong> Alto impacto social, viabilidad técnica con hardware económico y aplicabilidad directa en espacios públicos y privados.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-400 italic pt-2 border-t border-slate-800/60">
+        📌 Registrado en el tablero Miro del equipo dentro de la Lección 1.
+      </div>
+    </section>
+
+    <!-- SLIDE 3: LECCIÓN 2 - NAMING Y BOCETO -->
+    <section class="slide flex-col justify-between w-full h-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-sm">
+      <div>
+        <div class="text-[11px] font-bold text-sky-400 tracking-wider uppercase mb-1">Lección 2 • Marca e Identidad</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Naming & Boceto Seleccionado</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-2">
+          <!-- Columna Naming -->
+          <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/60">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">5 Opciones de Nombre Evaluadas</h3>
+            
+            <ul class="space-y-1.5 text-xs">
+              <li class="p-2 rounded bg-slate-950/30 text-slate-500 line-through">1. SignSense</li>
+              <li class="p-2 rounded bg-sky-950/70 border border-sky-500/40 font-bold text-sky-200 flex justify-between items-center shadow-sm">
+                <span>2. HandsOn</span>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">Ganador</span>
+              </li>
+              <li class="p-2 rounded bg-slate-950/30 text-slate-500 line-through">3. VozEnSeñas</li>
+              <li class="p-2 rounded bg-slate-950/30 text-slate-500 line-through">4. SignoTech</li>
+              <li class="p-2 rounded bg-slate-950/30 text-slate-500 line-through">5. Gestura</li>
+            </ul>
+
+            <p class="text-[11px] text-slate-400 mt-3">
+              <strong>Por qué HandsOn:</strong> Nombre corto, directo, enérgico y con doble sentido ("manos en acción" + "desarrollo práctico").
+            </p>
+          </div>
+
+          <!-- Columna Boceto -->
+          <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/60 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Concepto del Logotipo</h3>
+              
+              <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col items-center justify-center my-1">
+                <div class="text-3xl text-sky-400 mb-1">
+                  <i class="fa-solid fa-hand-holding-medical"></i>
+                </div>
+                <div class="font-black text-2xl tracking-tight text-white">
+                  Hands<span class="text-emerald-400">On</span>
+                </div>
+                <div class="text-[10px] tracking-widest uppercase text-slate-400 mt-1 font-semibold">
+                  Sign Language Detector
+                </div>
+              </div>
+            </div>
+
+            <div class="text-[11px] text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
+              <strong class="text-sky-300 block mb-0.5">Elementos del Boceto:</strong>
+              Mano abierta con trazos de circuitos electrónicos que derivan en un globo de texto/diálogo (traducción fluida de señas a voz).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-400 italic pt-2 border-t border-slate-800/60">
+        🎨 Registrado en Slides para la presentación del equipo.
+      </div>
+    </section>
+
+    <!-- SLIDE 4: LECCIÓN 2 - CLIENTE OBJETIVO Y PROBLEMA -->
+    <section class="slide flex-col justify-between w-full h-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-sm">
+      <div>
+        <div class="text-[11px] font-bold text-sky-400 tracking-wider uppercase mb-1">Lección 2 • Modelo de Negocio</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Cliente Objetivo y Necesidad</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
+          <!-- Cliente Objetivo -->
+          <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/60 space-y-3">
+            <div class="flex items-center gap-2">
+              <div class="p-1.5 bg-sky-500/10 text-sky-400 rounded-md">
+                <i class="fa-solid fa-user-group text-sm"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white">¿A quién va dirigido?</h3>
+            </div>
+
+            <div class="space-y-2 text-xs text-slate-300">
+              <div class="p-2.5 bg-slate-950/40 rounded-lg border border-slate-800">
+                <strong class="text-sky-300 block font-semibold mb-0.5">Usuario Directo (18 a 60 años):</strong>
+                Personas con discapacidad auditiva o del habla que requieren comunicarse de forma independiente en su día a día.
+              </div>
+              <div class="p-2.5 bg-slate-950/40 rounded-lg border border-slate-800">
+                <strong class="text-emerald-300 block font-semibold mb-0.5">Clientes B2B / Instituciones:</strong>
+                Escuelas, universidades, hospitales, bancos y ventanillas de atención al público que buscan cumplir con normativas de inclusión.
+              </div>
+            </div>
+          </div>
+
+          <!-- Problema y Solución -->
+          <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/60 space-y-3">
+            <div class="flex items-center gap-2">
+              <div class="p-1.5 bg-amber-500/10 text-amber-400 rounded-md">
+                <i class="fa-solid fa-lightbulb text-sm"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white">Problema vs. Solución</h3>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 bg-rose-950/30 rounded-lg border border-rose-500/20 text-slate-300">
+                <span class="font-bold text-rose-400 block mb-0.5">El Problema:</span>
+                Más del 98% de la población oyente no conoce la Lengua de Señas, creando barreras en trámites, atención médica y educación.
+              </div>
+
+              <div class="p-2.5 bg-emerald-950/30 rounded-lg border border-emerald-500/20 text-slate-300">
+                <span class="font-bold text-emerald-400 block mb-0.5">La Solución HandsOn:</span>
+                Captura los gestos mediante cámara y los traduce al instante en texto en pantalla o voz sintetizada sin requerir un intérprete humano.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 flex justify-between items-center">
+        <span><strong>Propuesta de Valor:</strong> Comunicación accesible, portátil y en tiempo real.</span>
+        <span class="text-sky-400 font-bold hidden sm:inline">HandsOn</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: DEFINICIÓN DE ROLES DEL EQUIPO -->
+    <section class="slide flex-col justify-between w-full h-full bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-sm">
+      <div>
+        <div class="flex justify-between items-start mb-3">
+          <div>
+            <span class="text-[11px] font-bold text-emerald-400 tracking-wider uppercase">Lección 1 • Estructura de Trabajo</span>
+            <h2 class="text-2xl md:text-3xl
