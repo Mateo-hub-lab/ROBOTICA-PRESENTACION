@@ -3,105 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HandsOn - Proyecto Feria de Robótica</title>
+  <title>HandsOn - Detector de Lenguaje de Señas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg-dark: #0f172a;
-      --card-bg: #1e293b;
-      --accent: #38bdf8;
-      --accent-hover: #0284c7;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: #334155;
+      --bg-main: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --accent-blue: #38bdf8;
+      --accent-purple: #818cf8;
+      --text-main: #f3f4f6;
+      --text-sub: #9ca3af;
+      --green-tag: #10b981;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-main);
       color: var(--text-main);
       line-height: 1.6;
-      padding-bottom: 40px;
+      padding-bottom: 50px;
     }
 
     header {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 2rem 1rem;
-      text-align: center;
+      background-color: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .header-content {
-      max-width: 1000px;
-      margin: 0 auto;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
     }
 
-    .badge {
-      background-color: rgba(56, 189, 248, 0.1);
-      color: var(--accent);
+    .brand span span {
+      color: var(--accent-blue);
+    }
+
+    .subtitle-badge {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      background: rgba(255, 255, 255, 0.05);
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    p.subtitle {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
+      border: 1px solid var(--card-border);
     }
 
     main {
       max-width: 1000px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
 
-    .section-card {
+    section {
       background-color: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
       padding: 2rem;
       margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
 
-    .section-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 1.5rem;
+    .hero-tag {
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
-    .section-title {
-      font-size: 1.5rem;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 span {
+      color: var(--accent-blue);
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    p {
+      color: var(--text-sub);
+      margin-bottom: 1rem;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
+      margin-top: 1.5rem;
     }
 
     @media (min-width: 768px) {
@@ -110,215 +123,267 @@
       }
     }
 
-    .idea-box, .role-box {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--border);
-      padding: 1.2rem;
-      border-radius: 8px;
+    .box-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
     }
 
-    .idea-box.winner {
-      border-color: var(--accent);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    .box-item.winner {
+      border-color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.03);
     }
 
-    .tag-winner {
-      background-color: var(--accent);
+    .winner-badge {
+      background-color: var(--accent-blue);
       color: #000;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 4px;
       float: right;
     }
 
-    .img-container {
-      width: 100%;
+    .img-card {
+      background: #000;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
       margin-top: 1rem;
       text-align: center;
-      background: rgba(0,0,0,0.2);
-      padding: 0.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
     }
 
-    .img-container img {
-      max-width: 100%;
+    .img-card img {
+      width: 100%;
       height: auto;
-      border-radius: 6px;
+      max-height: 350px;
+      object-fit: contain;
       display: block;
-      margin: 0 auto;
     }
 
     .img-caption {
+      padding: 0.75rem;
       font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
+      color: var(--text-sub);
+      background: rgba(17, 24, 39, 0.9);
+      border-top: 1px solid var(--card-border);
     }
 
     ul {
-      list-style-type: none;
+      list-style: none;
     }
 
     ul li {
-      margin-bottom: 0.5rem;
-      padding-left: 1.2rem;
-      position: relative;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-sub);
+      display: flex;
+      justify-content: space-between;
     }
 
-    ul li::before {
-      content: "•";
-      color: var(--accent);
-      position: absolute;
-      left: 0;
-      font-weight: bold;
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .role-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .role-card h4 {
+      color: var(--accent-purple);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .role-status {
+      font-size: 0.75rem;
+      color: var(--accent-blue);
+      margin-top: 0.5rem;
+      display: block;
     }
 
     footer {
       text-align: center;
-      color: var(--text-muted);
+      color: var(--text-sub);
       font-size: 0.9rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="header-content">
-      <span class="badge"><i class="fa-solid fa-microchip"></i> Proyecto Feria de Robótica</span>
-      <h1>Proyecto <span>HandsOn</span></h1>
-      <p class="subtitle">Traductor en tiempo real de Lengua de Señas mediante visión por computadora e IA</p>
+    <div class="brand">
+      <i class="fa-solid fa-hands-asl-interpreting" style="color: var(--accent-blue);"></i>
+      <span>Hands<span>On</span></span>
     </div>
+    <span class="subtitle-badge">Detector de Lenguaje de Señas</span>
   </header>
 
   <main>
 
-    <!-- LECCIÓN 1 -->
-    <section class="section-card">
-      <div class="section-header">
-        <span class="badge">Lección 1 • Miro Board</span>
-        <h2 class="section-title"><i class="fa-solid fa-lightbulb"></i> Lluvia de Ideas y Enfoque</h2>
-        <p style="color: var(--text-muted);">Eje Tecno-Creativo: Electrónica & Programación</p>
-      </div>
+    <!-- BANNER PRINCIPAL DE PORTADA -->
+    <section>
+      <span class="hero-tag">Lecciones 1 & 2 • Documentación para GitHub</span>
+      <h1>Proyecto <span>HandsOn</span></h1>
+      <p style="font-size: 1.1rem;">Traductor en tiempo real de Lengua de Señas mediante visión por computadora e Inteligencia Artificial.</p>
+      <p><strong>Eje Tecno-Creativo:</strong> Electrónica y Programación. Solución asistiva enfocada en la inclusión social y la autonomía comunicativa.</p>
+    </section>
 
+    <!-- SESIÓN 2: LECCIÓN 1 (PRIMERA PARTE) Y LECCIÓN 2 CON IMÁGENES REALES -->
+    <section>
+      <span class="hero-tag"><i class="fa-solid fa-calendar-check"></i> Sesión 2 • Avances y Evidencias Visuales</span>
+      <h2>Lluvia de Ideas, Identidad y Prototipo 3D</h2>
+      
+      <div class="grid-2">
+        <!-- BOCETO A MANO (LECCIÓN 1 - PRIMERA PARTE) -->
+        <div class="box-item">
+          <h3><i class="fa-solid fa-pen-ruler" style="color: var(--accent-blue);"></i> Lluvia de Ideas Inicial</h3>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem;">Boceto original registrado durante la primera lección con las 4 ideas planteadas:</p>
+          
+          <div class="img-card">
+            <img src="boceto_ideas.jpg" alt="Boceto de Lluvia de Ideas">
+            <div class="img-caption"><i class="fa-solid fa-camera"></i> Hoja original: Lentes para ciegos, Aspersor, Comedor y la Idea Ganadora (Detector de Señas).</div>
+          </div>
+        </div>
+
+        <!-- MODELO DIGITAL 3D (LECCIÓN 2) -->
+        <div class="box-item winner">
+          <span class="winner-badge">SELECCIONADO</span>
+          <h3><i class="fa-solid fa-cube" style="color: var(--accent-blue);"></i> Prototipo Digital (Panel)</h3>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem;">Diseño estructural con la cámara superior para la lectura de señas:</p>
+
+          <div class="img-card">
+            <img src="modelo_3d.png" alt="Diseño 3D HandsOn">
+            <div class="img-caption"><i class="fa-solid fa-microchip"></i> Modelo 3D del panel interactivo con módulo de cámara en la parte superior.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LECCIÓN 1: LLUVIA DE IDEAS (DETALLES) -->
+    <section>
+      <span class="hero-tag">Lección 1 • Miro Board</span>
+      <h2>Lluvia de Ideas y Enfoque</h2>
+      
       <div class="grid-2">
         <div>
           <h3 style="margin-bottom: 1rem;">Otras propuestas evaluadas:</h3>
-          
-          <div class="idea-box" style="margin-bottom: 0.8rem;">
-            <h4><i class="fa-solid fa-glasses"></i> Idea A: Lentes para Ciegos</h4>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Lentes de prevención con sensores de navegación y vibración para personas con discapacidad visual.</p>
+          <div class="box-item" style="margin-bottom: 0.8rem;">
+            <strong style="color: var(--text-main);">Idea A:</strong> Cinturón háptico de navegación con ultrasonido para personas con discapacidad visual.
           </div>
-
-          <div class="idea-box" style="margin-bottom: 0.8rem;">
-            <h4><i class="fa-solid fa-shower"></i> Idea B: Aspersor Automatizado</h4>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Sistema de riego eficiente para huertos y control de agua.</p>
+          <div class="box-item" style="margin-bottom: 0.8rem;">
+            <strong style="color: var(--text-main);">Idea B:</strong> Sistema de riego automatizado con sensores para huertos urbanos.
           </div>
-
-          <div class="idea-box">
-            <h4><i class="fa-solid fa-utensils"></i> Idea D: Comedor Automatizado Doméstico</h4>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Dispensador inteligente de alimento para mascotas.</p>
+          <div class="box-item">
+            <strong style="color: var(--text-main);">Idea D:</strong> Comedero inteligente con escáner para mascotas.
           </div>
         </div>
 
-        <div>
-          <div class="idea-box winner">
-            <span class="tag-winner">GANADORA</span>
-            <h4><i class="fa-solid fa-hands-asl-interpreting"></i> Idea C: Detector de Señas</h4>
-            <p style="margin-top: 0.5rem; font-size: 0.95rem;">
-              Aprovecha módulos de cámaras accesibles y modelos de aprendizaje automático para interpretar gestos manuales y traducirlos instantáneamente a texto o voz.
-            </p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--accent);">
-              <strong>Justificación:</strong> Alto impacto social, viabilidad técnica con hardware económico y solución directa a la accesibilidad.
-            </p>
-          </div>
-
-          <!-- Imagen Adjunta 1: Boceto de Ideas -->
-          <div class="img-container">
-            <img src="boceto_ideas.jpg" alt="Bocetos de Lluvia de Ideas y Propuesta Ganadora">
-            <div class="img-caption"><i class="fa-solid fa-pen-ruler"></i> Registro visual: Boceto conceptual del tablero de ideas</div>
-          </div>
+        <div class="box-item winner">
+          <span class="winner-badge">PROPUESTA GANADORA</span>
+          <h3 style="margin-top: 0.2rem;">Idea C: Detector de Lenguaje de Señas</h3>
+          <p style="margin-top: 0.5rem; font-size: 0.95rem;">
+            Aprovecha módulos de cámaras accesibles y modelos de aprendizaje automático (visión artificial) para interpretar gestos manuales y traducirlos instantáneamente a texto o voz.
+          </p>
+          <p style="font-size: 0.85rem; color: var(--accent-blue); margin-top: 0.5rem;">
+            <strong>Justificación:</strong> Alto impacto social, viabilidad técnica con hardware económico y aplicabilidad directa en espacios públicos y privados.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- LECCIÓN 2: IDENTIDAD Y CLIENTE -->
-    <section class="section-card">
-      <div class="section-header">
-        <span class="badge">Lección 2 • Identidad y Modelo de Negocio</span>
-        <h2 class="section-title"><i class="fa-solid fa-id-card"></i> Marca, Cliente Objetivo y Diseño</h2>
-      </div>
+    <!-- LECCIÓN 2: MARCA Y MODELO DE NEGOCIO -->
+    <section>
+      <span class="hero-tag">Lección 2 • Marca e Identidad & Modelo de Negocio</span>
+      <h2>Naming, Cliente Objetivo y Necesidad</h2>
 
       <div class="grid-2">
-        <div>
-          <h3>Naming & Concepto de Marca</h3>
-          <p style="margin-bottom: 0.8rem; font-size: 0.95rem;">Se evaluaron opciones como <i>SignSense</i>, <i>VozEnSeñas</i> y <i>SignoTech</i>, seleccionando oficialmente <strong>HandsOn</strong>.</p>
-          
-          <div class="idea-box" style="margin-bottom: 1rem;">
-            <h4><i class="fa-solid fa-tag"></i> HandsOn</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Nombre corto, dinámico y con doble sentido ("manos en acción" + "desarrollo práctico").</p>
-          </div>
-
-          <h3>Cliente Objetivo (B2C & B2B)</h3>
-          <ul style="margin-top: 0.5rem; font-size: 0.9rem;">
-            <li><strong>Usuario Directo:</strong> Personas con discapacidad auditiva o del habla que requieren autonomía diaria.</li>
-            <li><strong>Clientes B2B / Instituciones:</strong> Escuelas, universidades, hospitales, bancos y ventanillas públicas.</li>
+        <div class="box-item">
+          <h3>5 Opciones de Nombre Evaluadas</h3>
+          <ul style="margin-top: 0.5rem;">
+            <li>1. SignSense <span></span></li>
+            <li style="color: var(--accent-blue); font-weight: bold;">2. HandsOn <span>(Ganador)</span></li>
+            <li>3. VozEnSeñas <span></span></li>
+            <li>4. SignoTech <span></span></li>
+            <li>5. Gestura <span></span></li>
           </ul>
+          <p style="font-size: 0.85rem; margin-top: 0.8rem;">
+            <strong>Por qué HandsOn:</strong> Nombre corto, directo, enérgico y con doble sentido ("manos en acción" + "desarrollo práctico").
+          </p>
         </div>
 
-        <div>
-          <h3>Boceto y Modelo del Hardware</h3>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Estructura del prototipo con módulo de cámara superior para captura gestual.</p>
-
-          <!-- Imagen Adjunta 2: Modelo 3D / Prototipo -->
-          <div class="img-container">
-            <img src="modelo_3d.png" alt="Diseño del Prototipo HandsOn en 3D">
-            <div class="img-caption"><i class="fa-solid fa-cube"></i> Prototipo digital del panel de lectura con sensor/cámara</div>
-          </div>
+        <div class="box-item">
+          <h3>¿A quién va dirigido?</h3>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+            <strong>Usuario Directo (18 a 60 años):</strong> Personas con discapacidad auditiva o del habla que requieren comunicarse de forma independiente.
+          </p>
+          <p style="font-size: 0.9rem;">
+            <strong>Clientes B2B / Instituciones:</strong> Escuelas, universidades, hospitales, bancos y ventanillas públicas.
+          </p>
+          <p style="font-size: 0.85rem; color: var(--green-tag); margin-top: 0.5rem;">
+            <strong>Propuesta de Valor:</strong> Comunicación accesible, portátil y en tiempo real.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- LECCIÓN 1: ESTRUCTURA Y ROLES -->
-    <section class="section-card">
-      <div class="section-header">
-        <span class="badge">Lección 1 • Estructura de Trabajo</span>
-        <h2 class="section-title"><i class="fa-solid fa-users-gear"></i> Asignación de Roles del Equipo</h2>
-      </div>
+    <!-- ESTRUCTURA Y ROLES DEL EQUIPO -->
+    <section>
+      <span class="hero-tag">Lección 1 • Estructura de Trabajo</span>
+      <h2>Roles del Equipo</h2>
+      <p>Los 5 roles necesarios quedan estructurados para la asignación formal del equipo:</p>
 
-      <div class="grid-2">
-        <div class="role-box">
-          <h4><i class="fa-solid fa-compass-drafting"></i> 1. Diseño & Fabricación</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Diseño 3D de la carcasa del prototipo, soporte de la cámara y ensamblaje físico del hardware.</p>
+      <div class="role-grid">
+        <div class="role-card">
+          <h4><i class="fa-solid fa-compass-drafting"></i> Diseño & Fabricación</h4>
+          <p style="font-size: 0.85rem;">Diseño 3D de la carcasa del prototipo, soporte de la cámara y ensamblaje físico del hardware.</p>
+          <span class="role-status">Integrante: Por asignar</span>
         </div>
 
-        <div class="role-box">
-          <h4><i class="fa-solid fa-brain"></i> 2. Producto & IA</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Definición del vocabulario de señas, alcance del software y precisión del modelo de visión por computadora.</p>
+        <div class="role-card">
+          <h4><i class="fa-solid fa-brain"></i> Producto</h4>
+          <p style="font-size: 0.85rem;">Definición de señas a traducir, alcance del software, precisión del modelo de IA y UX/UI.</p>
+          <span class="role-status">Integrante: Por asignar</span>
         </div>
 
-        <div class="role-box">
-          <h4><i class="fa-solid fa-code"></i> 3. Desarrollo Web</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Plataforma web del proyecto, integración de interfaz y documentación en GitHub.</p>
+        <div class="role-card">
+          <h4><i class="fa-solid fa-code"></i> Desarrollo Web</h4>
+          <p style="font-size: 0.85rem;">Plataforma web del proyecto, documentación en GitHub y canal de descarga del software.</p>
+          <span class="role-status">Integrante: Por asignar</span>
         </div>
 
-        <div class="role-box">
-          <h4><i class="fa-solid fa-palette"></i> 4. Marca e Imagen</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Identidad gráfica de HandsOn, diseño del logotipo y preparación de diapositivas.</p>
+        <div class="role-card">
+          <h4><i class="fa-solid fa-palette"></i> Marca</h4>
+          <p style="font-size: 0.85rem;">Identidad gráfica de HandsOn, paleta de colores inclusivos, logo y diapositivas finales.</p>
+          <span class="role-status">Integrante: Por asignar</span>
         </div>
-      </div>
 
-      <div class="role-box" style="margin-top: 1.5rem;">
-        <h4><i class="fa-solid fa-bullhorn"></i> 5. Vocero Comercial</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Pitch de ventas, presentación del impacto social y propuesta de sostenibilidad del proyecto.</p>
+        <div class="role-card">
+          <h4><i class="fa-solid fa-bullhorn"></i> Vocero Comercial</h4>
+          <p style="font-size: 0.85rem;">Pitch de ventas, propuesta de impacto social, modelo de sostenibilidad y presentación final.</p>
+          <span class="role-status">Integrante: Por asignar</span>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>© 2026 Proyecto HandsOn · Feria de Robótica</p>
+    <p>Proyecto HandsOn · San Diego Bilingual High School & Tecnikids</p>
   </footer>
 
 </body>
